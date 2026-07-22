@@ -75,13 +75,13 @@ pipeline {
                         always {
                             publishHTML([
                                 allowMissing: false,
-                                alwaysLinkToLastBuild: false,
-                                keepAll: false,
+                                alwaysLinkToLastBuild: true,
+                                keepAll: true,
                                 reportDir: 'playwright-report',
                                 reportFiles: 'index.html',
                                 reportName: 'Playwright Local Report',
                                 reportTitles: '',
-                                useWrapperFileDirectly: true
+                                useWrapperFileDirectly: false
                             ])
                         }
                     }

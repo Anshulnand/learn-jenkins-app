@@ -15,6 +15,7 @@ pipeline {
                     reuseNode true
                 }
             }
+
             steps {
                 sh '''
                     ls -la
@@ -64,6 +65,7 @@ pipeline {
                     steps {
                         sh '''
                             npm install
+
                             npx serve -s build &
                             sleep 10
 
@@ -102,7 +104,7 @@ pipeline {
                 sh '''
                     echo "Deploying to Netlify..."
 
-                    npm install netlify-cli
+                    npm install -g netlify-cli
 
                     npx netlify --version
 
@@ -152,6 +154,5 @@ pipeline {
                 }
             }
         }
-
     }
 }

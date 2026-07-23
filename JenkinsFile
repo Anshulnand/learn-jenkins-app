@@ -91,7 +91,12 @@ pipeline {
 
             }
         }
-
+        stage("Approval"){
+            timeout(20) {
+                input cancel: 'Don\'t proceed', message: 'Ready to Deploy?', ok: 'Are you Sure?'
+                        }
+            
+        }
         stage('Deploy') {
             agent {
                 docker {
@@ -123,7 +128,7 @@ pipeline {
                     reuseNode true
                 }
             }
-
+            
             environment {
                 CI_ENVIRONMENT_URL = 'https://playful-klepon-912690.netlify.app'
             }

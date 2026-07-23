@@ -100,11 +100,9 @@ pipeline {
                 }
             }
 
-            steps {
+           steps {
                 sh '''
                     echo "Deploying to Netlify..."
-
-                    npm install -g netlify-cli
 
                     npx netlify --version
 
@@ -112,9 +110,10 @@ pipeline {
                         --dir=build \
                         --prod \
                         --site=$NETLIFY_SITE_ID \
+                        --auth=$NETLIFY_AUTH_TOKEN \
                         --no-build
                 '''
-            }
+                }
         }
 
         stage('Prod E2E') {

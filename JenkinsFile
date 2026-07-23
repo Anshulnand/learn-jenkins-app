@@ -92,9 +92,12 @@ pipeline {
             }
         }
         stage("Approval"){
-            timeout(20) {
+            steps{
+                timeout(20) {
                 input cancel: 'Don\'t proceed', message: 'Ready to Deploy?', ok: 'Are you Sure?'
                         }
+            }
+            
             
         }
         stage('Deploy') {
